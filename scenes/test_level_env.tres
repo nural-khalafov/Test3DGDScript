@@ -1,0 +1,20 @@
+[gd_resource type="Environment" load_steps=4 format=3 uid="uid://cut2nuniglecc"]
+
+[ext_resource type="Texture2D" uid="uid://b4m2u7h23tvxf" path="res://assets/graphics/enviroment/industrial_sunset_puresky_4k.hdr" id="1_128em"]
+
+[sub_resource type="PanoramaSkyMaterial" id="PanoramaSkyMaterial_ahbqi"]
+panorama = ExtResource("1_128em")
+
+[sub_resource type="Sky" id="Sky_2venv"]
+sky_material = SubResource("PanoramaSkyMaterial_ahbqi")
+
+[resource]
+background_mode = 2
+sky = SubResource("Sky_2venv")
+ambient_light_source = 3
+reflected_light_source = 2
+ssr_enabled = true
+ssao_enabled = true
+ssil_enabled = true
+sdfgi_enabled = true
+glow_enabled = true

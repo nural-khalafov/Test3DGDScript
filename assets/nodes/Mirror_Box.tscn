@@ -1,0 +1,34 @@
+[gd_scene load_steps=5 format=3 uid="uid://bq0tntmjeateg"]
+
+[ext_resource type="Script" uid="uid://dmry4e46jtdac" path="res://scripts/props/Mirror.gd" id="1_hvwkg"]
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_tmr53"]
+
+[sub_resource type="ViewportTexture" id="ViewportTexture_hvwkg"]
+viewport_path = NodePath("Mirror/SubViewport")
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_hvwkg"]
+resource_local_to_scene = true
+shading_mode = 0
+albedo_texture = SubResource("ViewportTexture_hvwkg")
+
+[node name="MirrorBox" type="CSGBox3D"]
+use_collision = true
+size = Vector3(1, 4.26028, 3.76422)
+material = SubResource("StandardMaterial3D_tmr53")
+
+[node name="Mirror" type="CSGBox3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.513031, 0.0739098, -0.0226364)
+size = Vector3(0.0151367, 3.72327, 3.30629)
+material = SubResource("StandardMaterial3D_hvwkg")
+script = ExtResource("1_hvwkg")
+
+[node name="SubViewport" type="SubViewport" parent="Mirror"]
+msaa_2d = 3
+msaa_3d = 3
+size = Vector2i(512, 716)
+render_target_update_mode = 0
+
+[node name="Camera3D" type="Camera3D" parent="Mirror/SubViewport"]
+transform = Transform3D(-4.37114e-08, 0, 1, -1, -4.37114e-08, -4.37114e-08, 4.37114e-08, -1, 1.91069e-15, 97.881, 2.25, 55.556)
+cull_mask = 1048319

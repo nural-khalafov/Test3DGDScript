@@ -1,0 +1,174 @@
+[gd_scene load_steps=9 format=3 uid="uid://t731yuvflmyr"]
+
+[ext_resource type="Material" uid="uid://c65hmy123ka1c" path="res://assets/graphics/materials/checkerboard_mat.tres" id="1_2venv"]
+[ext_resource type="Environment" uid="uid://cut2nuniglecc" path="res://scenes/test_level_env.tres" id="1_88ety"]
+[ext_resource type="Material" uid="uid://du7ffw2d2n8so" path="res://assets/graphics/materials/checkerboard2_mat.tres" id="2_j6w7d"]
+[ext_resource type="PackedScene" uid="uid://35awc5841fwy" path="res://assets/nodes/controllers/FPSController.tscn" id="2_paw1w"]
+[ext_resource type="Texture2D" uid="uid://b1ehvbt0fy32w" path="res://assets/graphics/textures/target_texture.png" id="3_tmr53"]
+[ext_resource type="Material" uid="uid://yegclm2cgfnt" path="res://assets/graphics/materials/checkerboard1_mat.tres" id="3_x4b8f"]
+[ext_resource type="PackedScene" uid="uid://bq0tntmjeateg" path="res://assets/nodes/Mirror_Box.tscn" id="6_88ety"]
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_qcd3b"]
+albedo_texture = ExtResource("3_tmr53")
+uv1_scale = Vector3(0.5, 0.5, 0.5)
+uv1_offset = Vector3(0.84, 0.29, 0)
+uv1_triplanar = true
+uv1_world_triplanar = true
+
+[node name="World" type="Node3D"]
+
+[node name="WorldSettings" type="Node3D" parent="."]
+
+[node name="DirectionalLight3D" type="DirectionalLight3D" parent="WorldSettings"]
+transform = Transform3D(1, 0, 0, 0, 0.696214, 0.717835, 0, -0.717835, 0.696214, 0, 7, 0)
+visible = false
+light_energy = 0.5
+shadow_enabled = true
+
+[node name="WorldEnvironment" type="WorldEnvironment" parent="WorldSettings"]
+environment = ExtResource("1_88ety")
+
+[node name="Enviroment" type="Node3D" parent="."]
+
+[node name="Level" type="Node3D" parent="Enviroment"]
+
+[node name="LevelSettings" type="Node3D" parent="Enviroment/Level"]
+
+[node name="Ground" type="CSGBox3D" parent="Enviroment/Level/LevelSettings"]
+use_collision = true
+size = Vector3(200, 1, 200)
+material = ExtResource("1_2venv")
+
+[node name="BorderWall1" type="CSGBox3D" parent="Enviroment/Level/LevelSettings"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 99.5, 5.5, 0)
+use_collision = true
+size = Vector3(1, 10, 200)
+material = ExtResource("1_2venv")
+
+[node name="BorderWall2" type="CSGBox3D" parent="Enviroment/Level/LevelSettings"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -99.5, 5.5, 0)
+use_collision = true
+size = Vector3(1, 10, 200)
+material = ExtResource("1_2venv")
+
+[node name="BorderWall3" type="CSGBox3D" parent="Enviroment/Level/LevelSettings"]
+transform = Transform3D(-4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, 0, 5.5, 99.5)
+use_collision = true
+size = Vector3(1, 10, 200)
+material = ExtResource("1_2venv")
+
+[node name="BorderWall4" type="CSGBox3D" parent="Enviroment/Level/LevelSettings"]
+transform = Transform3D(-4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, 0, 5.5, -99.5)
+use_collision = true
+size = Vector3(1, 10, 200)
+material = ExtResource("1_2venv")
+
+[node name="ShootingRange" type="Node3D" parent="Enviroment/Level"]
+
+[node name="Targets" type="Node3D" parent="Enviroment/Level/ShootingRange"]
+
+[node name="CloseRange" type="Node3D" parent="Enviroment/Level/ShootingRange/Targets"]
+
+[node name="Target" type="CSGBox3D" parent="Enviroment/Level/ShootingRange/Targets/CloseRange"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 53.312, 1.74403, 31.6186)
+use_collision = true
+size = Vector3(0.3, 2.5, 0.2)
+material = ExtResource("3_x4b8f")
+
+[node name="ShootingTarget" type="CSGCylinder3D" parent="Enviroment/Level/ShootingRange/Targets/CloseRange/Target"]
+transform = Transform3D(1, 0, 0, 0, -4.37114e-08, -1, 0, 1, -4.37114e-08, 0, 0.658517, 0.260742)
+radius = 0.6
+height = 0.304688
+smooth_faces = false
+material = SubResource("StandardMaterial3D_qcd3b")
+
+[node name="ShootingRangeBottom" type="CSGBox3D" parent="Enviroment/Level/ShootingRange"]
+transform = Transform3D(-4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, 70.7719, 0.857526, 40.6472)
+use_collision = true
+size = Vector3(2.266, 0.725616, 54.476)
+material = ExtResource("2_j6w7d")
+
+[node name="ShootingRangeLeftWall" type="CSGBox3D" parent="Enviroment/Level/ShootingRange"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 43.054, 5.47789, -24)
+use_collision = true
+size = Vector3(1, 10.1262, 150)
+material = ExtResource("2_j6w7d")
+
+[node name="ShootingRangeRightWall" type="CSGBox3D" parent="Enviroment/Level/ShootingRange"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 98.5018, 5.45372, -24)
+use_collision = true
+size = Vector3(1, 10.1746, 150)
+material = ExtResource("2_j6w7d")
+
+[node name="ShootingRangeDistanceWall" type="CSGBox3D" parent="Enviroment/Level/ShootingRange"]
+transform = Transform3D(-4.37114e-08, 0, -1, 0, 1, 0, 1, 0, -4.37114e-08, 70.7064, 5.47789, 6.94231)
+use_collision = true
+size = Vector3(1, 10.1262, 54.7639)
+material = ExtResource("2_j6w7d")
+
+[node name="ShootingRangeCeiling1" type="CSGBox3D" parent="Enviroment/Level/ShootingRange"]
+transform = Transform3D(-4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, 70.7719, 9.86421, 36.6952)
+use_collision = true
+size = Vector3(39.4861, 1.35358, 54.476)
+material = ExtResource("2_j6w7d")
+
+[node name="ShootingRangeCeiling2" type="CSGBox3D" parent="Enviroment/Level/ShootingRange"]
+transform = Transform3D(-4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, 70.7719, 9.86421, -21.6318)
+use_collision = true
+size = Vector3(34.0762, 1.35358, 54.476)
+material = ExtResource("2_j6w7d")
+
+[node name="ShootingRangeCeiling3" type="CSGBox3D" parent="Enviroment/Level/ShootingRange"]
+transform = Transform3D(-4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, 70.7719, 9.86421, -69.6138)
+use_collision = true
+size = Vector3(34.0762, 1.35358, 54.476)
+material = ExtResource("2_j6w7d")
+
+[node name="SR_Lamp" type="SpotLight3D" parent="Enviroment/Level/ShootingRange"]
+transform = Transform3D(1, 0, 0, 0, -4.37114e-08, 1, 0, -1, -4.37114e-08, 88.4606, 8.96267, 34.0534)
+light_energy = 8.0
+spot_range = 12.2977
+spot_angle = 55.0855
+
+[node name="SR_Lamp1" type="SpotLight3D" parent="Enviroment/Level/ShootingRange"]
+transform = Transform3D(1, 0, 0, 0, -4.37114e-08, 1, 0, -1, -4.37114e-08, 70.6999, 8.96267, 37.3319)
+light_energy = 8.0
+spot_range = 12.2977
+spot_angle = 55.0855
+
+[node name="SR_Lamp2" type="SpotLight3D" parent="Enviroment/Level/ShootingRange"]
+transform = Transform3D(1, 0, 0, 0, -4.37114e-08, 1, 0, -1, -4.37114e-08, 51.8455, 8.96267, 36.9355)
+light_energy = 8.0
+spot_range = 12.2977
+spot_angle = 55.0855
+
+[node name="SR_Panel" type="CSGBox3D" parent="Enviroment/Level/ShootingRange"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 43.6722, 3.433, 46.1823)
+use_collision = true
+size = Vector3(0.187988, 3.29195, 8.56479)
+material = ExtResource("3_x4b8f")
+
+[node name="MirrorBox" parent="Enviroment/Level" instance=ExtResource("6_88ety")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 98.5187, 2.63156, 55.6226)
+
+[node name="CharacterBody3D" parent="." instance=ExtResource("2_paw1w")]
+transform = Transform3D(1.31134e-07, 0, -1, 0, 1, 0, 1, 0, 1.31134e-07, 94.8465, 0.700361, 55.4379)
+is_crouch_toggled = false
+
+[node name="CSGBox3D" type="CSGBox3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 88.859, 2.4, 71.69)
+use_collision = true
+size = Vector3(4.2, 0.5, 3.8)
+material = ExtResource("3_x4b8f")
+
+[node name="CSGBox3D2" type="CSGBox3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 86.3119, 1.91018, 71.69)
+use_collision = true
+size = Vector3(0.893811, 0.5, 3.8)
+material = ExtResource("3_x4b8f")
+
+[node name="CSGBox3D3" type="CSGBox3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 85.4216, 1.41917, 71.69)
+use_collision = true
+size = Vector3(0.893811, 0.5, 3.8)
+material = ExtResource("3_x4b8f")
