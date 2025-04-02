@@ -9,6 +9,8 @@ __________________________________________________
 * Ctrl - Crouching
 * Left Shift - Running
 * Space - Jumping
+* Q & E - Leaning (incoming)
+* F - Interact (incoming)
 
 __________________________________________________
 
@@ -18,3 +20,15 @@ __________________________________________________
 > * Movement mechanics: WASD movement, running, jumping, crouching, mouse look
 > * Static white dot crosshair
 > * Prototype scene "test_level" for testing project functionallity
+
+__________________________________________________
+
+### Incoming updates:
+
+> * State Machine pattern for FPSController
+> * A fully-fledged character mesh with arms, legs and head (not capsule)
+> * Basic animations for player
+> * IK-Setup for leaning movement mechanic
+> * Interaction system
+> * Up & Down stairs movement
+> * IK-Setup for player legs during up & down stairs movement
