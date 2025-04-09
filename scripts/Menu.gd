@@ -15,6 +15,7 @@ func _input(event: InputEvent) -> void:
             get_tree().paused = true
         elif MenuGlobals.menu_toggled:
             MenuGlobals.menu.visible = false
+            MenuGlobals.options.visible = false
             Input.mouse_mode = Input.MOUSE_MODE_CAPTURED
             MenuGlobals.menu_toggled = false
             get_tree().paused = false
@@ -26,7 +27,8 @@ func _on_resume_button_pressed() -> void:
     get_tree().paused = false
 
 func _on_options_button_pressed() -> void:
-    pass # Replace with function body. # implement options menu
+    visible = false
+    MenuGlobals.options.visible = true
 
 func _on_quit_button_pressed() -> void:
     get_tree().quit()

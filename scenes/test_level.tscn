@@ -1,4 +1,4 @@
-[gd_scene load_steps=16 format=3 uid="uid://t731yuvflmyr"]
+[gd_scene load_steps=18 format=3 uid="uid://t731yuvflmyr"]
 
 [ext_resource type="Material" uid="uid://c65hmy123ka1c" path="res://assets/graphics/materials/checkerboard_mat.tres" id="1_2venv"]
 [ext_resource type="Environment" uid="uid://cut2nuniglecc" path="res://scenes/test_level_env.tres" id="1_88ety"]
@@ -14,6 +14,7 @@
 [ext_resource type="Texture2D" uid="uid://cnuyl08so2q1h" path="res://assets/graphics/ui/buttons/options_button_icon.png" id="11_fyxdr"]
 [ext_resource type="Texture2D" uid="uid://dral4fv7s0j3d" path="res://assets/graphics/ui/buttons/resume_button_icon.png" id="11_kpk0m"]
 [ext_resource type="Script" uid="uid://b83e3tro7lctx" path="res://scripts/Menu.gd" id="11_qs1vn"]
+[ext_resource type="Script" uid="uid://bnv5ufnwo7sm5" path="res://scripts/Options.gd" id="15_13hs1"]
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_qcd3b"]
 albedo_texture = ExtResource("3_tmr53")
@@ -21,6 +22,9 @@ uv1_scale = Vector3(0.5, 0.5, 0.5)
 uv1_offset = Vector3(0.84, 0.29, 0)
 uv1_triplanar = true
 uv1_world_triplanar = true
+
+[sub_resource type="LabelSettings" id="LabelSettings_13hs1"]
+font_size = 32
 
 [node name="World" type="Node3D"]
 
@@ -159,27 +163,145 @@ material = ExtResource("3_x4b8f")
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 98.5187, 2.63156, 55.6226)
 
 [node name="Stairs" type="Node3D" parent="Enviroment/Level"]
+transform = Transform3D(-4.37114e-08, 0, -1, 0, 1, 0, 1, 0, -4.37114e-08, 50.6572, 1.33661, 70.2956)
 
 [node name="CSGBox3D" type="CSGBox3D" parent="Enviroment/Level/Stairs"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 88.859, 2.4, 71.69)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1.23823, 1.40633, 0)
 use_collision = true
-size = Vector3(4.2, 0.5, 3.8)
+size = Vector3(1.72354, 0.5, 3.8)
 material = ExtResource("3_x4b8f")
 
 [node name="CSGBox3D2" type="CSGBox3D" parent="Enviroment/Level/Stairs"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 86.3119, 1.91018, 71.69)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 2.54147, 0.900652, 0)
 use_collision = true
 size = Vector3(0.893811, 0.5, 3.8)
 material = ExtResource("3_x4b8f")
 
 [node name="CSGBox3D3" type="CSGBox3D" parent="Enviroment/Level/Stairs"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 85.4216, 1.41917, 71.69)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 3.44817, 0.421247, 0)
+use_collision = true
+size = Vector3(0.893811, 0.5, 3.8)
+material = ExtResource("3_x4b8f")
+
+[node name="CSGBox3D4" type="CSGBox3D" parent="Enviroment/Level/Stairs"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 4.34138, -0.0791957, 0)
+use_collision = true
+size = Vector3(0.893811, 0.5, 3.8)
+material = ExtResource("3_x4b8f")
+
+[node name="CSGBox3D5" type="CSGBox3D" parent="Enviroment/Level/Stairs"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 5.24733, -0.579094, 0)
+use_collision = true
+size = Vector3(0.893811, 0.5, 3.8)
+material = ExtResource("3_x4b8f")
+
+[node name="Stairs2" type="Node3D" parent="Enviroment/Level"]
+transform = Transform3D(-4.37114e-08, 0, -1, 0, 1, 0, 1, 0, -4.37114e-08, 50.6572, 3.32027, 64.9951)
+
+[node name="CSGBox3D" type="CSGBox3D" parent="Enviroment/Level/Stairs2"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1.23823, 1.40633, 0)
+use_collision = true
+size = Vector3(1.72354, 0.5, 3.8)
+material = ExtResource("3_x4b8f")
+
+[node name="CSGBox3D2" type="CSGBox3D" parent="Enviroment/Level/Stairs2"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 2.54147, 0.900652, 0)
+use_collision = true
+size = Vector3(0.893811, 0.5, 3.8)
+material = ExtResource("3_x4b8f")
+
+[node name="CSGBox3D3" type="CSGBox3D" parent="Enviroment/Level/Stairs2"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 3.44817, 0.421247, 0)
+use_collision = true
+size = Vector3(0.893811, 0.5, 3.8)
+material = ExtResource("3_x4b8f")
+
+[node name="CSGBox3D4" type="CSGBox3D" parent="Enviroment/Level/Stairs2"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 4.34138, -0.0791957, 0)
+use_collision = true
+size = Vector3(0.893811, 0.5, 3.8)
+material = ExtResource("3_x4b8f")
+
+[node name="CSGBox3D5" type="CSGBox3D" parent="Enviroment/Level/Stairs2"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 5.24733, -0.579094, 0)
+use_collision = true
+size = Vector3(0.893811, 0.5, 3.8)
+material = ExtResource("3_x4b8f")
+
+[node name="Stairs3" type="Node3D" parent="Enviroment/Level"]
+transform = Transform3D(-4.37114e-08, 0, -1, 0, 1, 0, 1, 0, -4.37114e-08, 50.6572, 5.30863, 59.6833)
+
+[node name="CSGBox3D" type="CSGBox3D" parent="Enviroment/Level/Stairs3"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1.23823, 1.40633, 0)
+use_collision = true
+size = Vector3(1.72354, 0.5, 3.8)
+material = ExtResource("3_x4b8f")
+
+[node name="CSGBox3D2" type="CSGBox3D" parent="Enviroment/Level/Stairs3"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 2.54147, 0.900652, 0)
+use_collision = true
+size = Vector3(0.893811, 0.5, 3.8)
+material = ExtResource("3_x4b8f")
+
+[node name="CSGBox3D3" type="CSGBox3D" parent="Enviroment/Level/Stairs3"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 3.44817, 0.421247, 0)
+use_collision = true
+size = Vector3(0.893811, 0.5, 3.8)
+material = ExtResource("3_x4b8f")
+
+[node name="CSGBox3D4" type="CSGBox3D" parent="Enviroment/Level/Stairs3"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 4.34138, -0.0791957, 0)
+use_collision = true
+size = Vector3(0.893811, 0.5, 3.8)
+material = ExtResource("3_x4b8f")
+
+[node name="CSGBox3D5" type="CSGBox3D" parent="Enviroment/Level/Stairs3"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 5.24733, -0.579094, 0)
+use_collision = true
+size = Vector3(0.893811, 0.5, 3.8)
+material = ExtResource("3_x4b8f")
+
+[node name="Stairs4" type="Node3D" parent="Enviroment/Level"]
+transform = Transform3D(-4.37114e-08, 0, -1, 0, 1, 0, 1, 0, -4.37114e-08, 50.6572, 7.2989, 56.1576)
+
+[node name="CSGBox3D" type="CSGBox3D" parent="Enviroment/Level/Stairs4"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1.23823, 1.40633, 0)
+use_collision = true
+size = Vector3(1.72354, 0.5, 3.8)
+material = ExtResource("3_x4b8f")
+
+[node name="CSGBox3D2" type="CSGBox3D" parent="Enviroment/Level/Stairs4"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 2.54147, 0.900652, 0)
+use_collision = true
+size = Vector3(0.893811, 0.5, 3.8)
+material = ExtResource("3_x4b8f")
+
+[node name="CSGBox3D3" type="CSGBox3D" parent="Enviroment/Level/Stairs4"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 3.44817, 0.421247, 0)
+use_collision = true
+size = Vector3(0.893811, 0.5, 3.8)
+material = ExtResource("3_x4b8f")
+
+[node name="CSGBox3D4" type="CSGBox3D" parent="Enviroment/Level/Stairs4"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 4.34138, -0.0791957, 0)
+use_collision = true
+size = Vector3(0.893811, 0.5, 3.8)
+material = ExtResource("3_x4b8f")
+
+[node name="CSGBox3D5" type="CSGBox3D" parent="Enviroment/Level/Stairs4"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 5.24733, -0.579094, 0)
+use_collision = true
+size = Vector3(0.893811, 0.5, 3.8)
+material = ExtResource("3_x4b8f")
+
+[node name="CSGBox3D6" type="CSGBox3D" parent="Enviroment/Level/Stairs4"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.0727921, 1.89982, 0)
 use_collision = true
 size = Vector3(0.893811, 0.5, 3.8)
 material = ExtResource("3_x4b8f")
 
 [node name="Player" parent="." instance=ExtResource("8_ahbqi")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 89.3309, 0.524796, 54.6785)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 89.3309, 1.2985, 61.0119)
 
 [node name="UI" type="Control" parent="."]
 layout_mode = 3
@@ -225,6 +347,7 @@ layout_mode = 2
 
 [node name="MenuPanel" type="Panel" parent="UI"]
 process_mode = 3
+visible = false
 layout_mode = 1
 anchors_preset = 8
 anchor_left = 0.5
@@ -284,6 +407,44 @@ grow_vertical = 0
 scale = Vector2(0.75, 0.75)
 texture_normal = ExtResource("11_dw7u0")
 
+[node name="OptionsPanel" type="Panel" parent="UI" node_paths=PackedStringArray("fullscreen_switcher")]
+process_mode = 3
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -704.0
+offset_top = -384.0
+offset_right = 696.0
+offset_bottom = 416.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("15_13hs1")
+fullscreen_switcher = NodePath("FullscreenSwitcher")
+
+[node name="WindowModeLabel" type="Label" parent="UI/OptionsPanel"]
+layout_mode = 0
+offset_left = 129.0
+offset_top = 62.0
+offset_right = 392.0
+offset_bottom = 121.0
+text = "FULLSCREEN WINDOW MODE"
+label_settings = SubResource("LabelSettings_13hs1")
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="FullscreenSwitcher" type="CheckButton" parent="UI/OptionsPanel"]
+unique_name_in_owner = true
+layout_mode = 0
+offset_left = 597.0
+offset_top = 62.0
+offset_right = 641.0
+offset_bottom = 86.0
+scale = Vector2(2.5, 2.5)
+
 [connection signal="pressed" from="UI/MenuPanel/ResumeButton" to="UI/MenuPanel" method="_on_resume_button_pressed"]
 [connection signal="pressed" from="UI/MenuPanel/OptionsButton" to="UI/MenuPanel" method="_on_options_button_pressed"]
 [connection signal="pressed" from="UI/MenuPanel/QuitButton" to="UI/MenuPanel" method="_on_quit_button_pressed"]
+[connection signal="toggled" from="UI/OptionsPanel/FullscreenSwitcher" to="UI/OptionsPanel" method="_on_fullscreen_switcher_toggled"]

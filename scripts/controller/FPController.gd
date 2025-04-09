@@ -1,12 +1,9 @@
 class_name PlayerController extends CharacterBody3D
 
-@export_category("Player Controller Settings")
-
 @export_category("Player Camera Settings")
 @export var mouse_sensitivity : float = 0.25
 
 @export_category("Node Components")
-@export var animation_player : AnimationPlayer
 @export var crouch_shapecast : ShapeCast3D
 
 # Camera tilt constant variables
@@ -24,10 +21,9 @@ var menu_toggled : bool = false
 
 var input_direction
 
-@onready var animation_tree : AnimationTree = $AnimationTree
-@onready var state_machine_playback : AnimationNodeStateMachinePlayback = $AnimationTree.get("parameters/playback")
+@onready var animation_tree : AnimationTree = $"AnimationTree"
 
-var gravity = ProjectSettings.get_setting("physics/3d/default_gravity")
+var gravity = ProjectSettings.get_setting("physics/3d/default_gravity") * 1.1
 
 func _init() -> void:
 	Global.player = self
@@ -45,7 +41,6 @@ func _unhandled_input(event: InputEvent) -> void:
 	if _mouse_input:
 		_rotation_input = -event.relative.x * mouse_sensitivity
 		_tilt_input = -event.relative.y * mouse_sensitivity
-
 
 func _physics_process(delta: float) -> void:
 	# update camera movement based on mouse movement
