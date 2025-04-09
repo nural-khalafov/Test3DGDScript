@@ -1,12 +1,15 @@
-[gd_scene load_steps=9 format=3 uid="uid://t731yuvflmyr"]
+[gd_scene load_steps=12 format=3 uid="uid://t731yuvflmyr"]
 
 [ext_resource type="Material" uid="uid://c65hmy123ka1c" path="res://assets/graphics/materials/checkerboard_mat.tres" id="1_2venv"]
 [ext_resource type="Environment" uid="uid://cut2nuniglecc" path="res://scenes/test_level_env.tres" id="1_88ety"]
 [ext_resource type="Material" uid="uid://du7ffw2d2n8so" path="res://assets/graphics/materials/checkerboard2_mat.tres" id="2_j6w7d"]
-[ext_resource type="PackedScene" uid="uid://35awc5841fwy" path="res://assets/nodes/controllers/FPSController.tscn" id="2_paw1w"]
 [ext_resource type="Texture2D" uid="uid://b1ehvbt0fy32w" path="res://assets/graphics/textures/target_texture.png" id="3_tmr53"]
 [ext_resource type="Material" uid="uid://yegclm2cgfnt" path="res://assets/graphics/materials/checkerboard1_mat.tres" id="3_x4b8f"]
 [ext_resource type="PackedScene" uid="uid://bq0tntmjeateg" path="res://assets/nodes/Mirror_Box.tscn" id="6_88ety"]
+[ext_resource type="Script" uid="uid://d1sttdnoishl8" path="res://scripts/controller/CenterDot.gd" id="8_4asn1"]
+[ext_resource type="PackedScene" uid="uid://cgkvkrkblr0j7" path="res://assets/nodes/controllers/Player.tscn" id="8_ahbqi"]
+[ext_resource type="Theme" uid="uid://dbxh4c7yj706u" path="res://assets/graphics/ui/themes/debug.tres" id="9_dw7u0"]
+[ext_resource type="Script" uid="uid://dpy14e14hel55" path="res://scripts/Debug.gd" id="10_fyxdr"]
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_qcd3b"]
 albedo_texture = ExtResource("3_tmr53")
@@ -151,24 +154,66 @@ material = ExtResource("3_x4b8f")
 [node name="MirrorBox" parent="Enviroment/Level" instance=ExtResource("6_88ety")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 98.5187, 2.63156, 55.6226)
 
-[node name="CharacterBody3D" parent="." instance=ExtResource("2_paw1w")]
-transform = Transform3D(1.31134e-07, 0, -1, 0, 1, 0, 1, 0, 1.31134e-07, 94.8465, 0.700361, 55.4379)
-is_crouch_toggled = false
+[node name="Stairs" type="Node3D" parent="Enviroment/Level"]
 
-[node name="CSGBox3D" type="CSGBox3D" parent="."]
+[node name="CSGBox3D" type="CSGBox3D" parent="Enviroment/Level/Stairs"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 88.859, 2.4, 71.69)
 use_collision = true
 size = Vector3(4.2, 0.5, 3.8)
 material = ExtResource("3_x4b8f")
 
-[node name="CSGBox3D2" type="CSGBox3D" parent="."]
+[node name="CSGBox3D2" type="CSGBox3D" parent="Enviroment/Level/Stairs"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 86.3119, 1.91018, 71.69)
 use_collision = true
 size = Vector3(0.893811, 0.5, 3.8)
 material = ExtResource("3_x4b8f")
 
-[node name="CSGBox3D3" type="CSGBox3D" parent="."]
+[node name="CSGBox3D3" type="CSGBox3D" parent="Enviroment/Level/Stairs"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 85.4216, 1.41917, 71.69)
 use_collision = true
 size = Vector3(0.893811, 0.5, 3.8)
 material = ExtResource("3_x4b8f")
+
+[node name="Player" parent="." instance=ExtResource("8_ahbqi")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 89.3309, 0.524796, 54.6785)
+
+[node name="UI" type="Control" parent="."]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 1
+
+[node name="CenterDot" type="CenterContainer" parent="UI"]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -20.0
+offset_top = -20.0
+offset_right = 20.0
+offset_bottom = 20.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("8_4asn1")
+
+[node name="DebugPanel" type="PanelContainer" parent="UI"]
+custom_minimum_size = Vector2(200, 0)
+layout_mode = 0
+offset_left = 10.0
+offset_top = 10.0
+offset_right = 210.0
+offset_bottom = 50.0
+theme = ExtResource("9_dw7u0")
+script = ExtResource("10_fyxdr")
+
+[node name="MarginContainer" type="MarginContainer" parent="UI/DebugPanel"]
+layout_mode = 2
+
+[node name="VBoxContainer" type="VBoxContainer" parent="UI/DebugPanel/MarginContainer"]
+unique_name_in_owner = true
+layout_mode = 2

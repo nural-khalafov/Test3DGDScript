@@ -1,4 +1,4 @@
-[gd_scene load_steps=13 format=3 uid="uid://35awc5841fwy"]
+[gd_scene load_steps=17 format=3 uid="uid://35awc5841fwy"]
 
 [ext_resource type="PackedScene" uid="uid://gvm0me264r32" path="res://assets/graphics/meshes/starter_assets/disguise-glasses.glb" id="1_gnbc5"]
 [ext_resource type="Script" uid="uid://dvxng0y08o03h" path="res://scripts/controller/FPSController.gd" id="1_qjb0n"]
@@ -6,6 +6,10 @@
 [ext_resource type="Script" uid="uid://d1sttdnoishl8" path="res://scripts/controller/CenterDot.gd" id="4_oxabm"]
 [ext_resource type="Theme" uid="uid://dbxh4c7yj706u" path="res://assets/graphics/ui/themes/debug.tres" id="5_jemsa"]
 [ext_resource type="Script" uid="uid://dpy14e14hel55" path="res://scripts/Debug.gd" id="6_ephn5"]
+[ext_resource type="Script" uid="uid://dh5po65q44kak" path="res://scripts/controller/state machine/StateMachine.gd" id="7_a6ktj"]
+[ext_resource type="Script" uid="uid://c1mdy7adp7yyp" path="res://scripts/controller/state machine/states/IdlePlayerState.gd" id="8_3hwvd"]
+[ext_resource type="Script" uid="uid://dsqo253uphorw" path="res://scripts/controller/state machine/states/WalkingPlayerState.gd" id="9_4ymv7"]
+[ext_resource type="Script" uid="uid://3qcbfy6bfukr" path="res://scripts/controller/state machine/states/SprintingPlayerState.gd" id="10_4ymv7"]
 
 [sub_resource type="CapsuleShape3D" id="CapsuleShape3D_6vnn4"]
 
@@ -254,5 +258,18 @@ layout_mode = 2
 [node name="VBoxContainer" type="VBoxContainer" parent="UI/DebugPanel/MarginContainer"]
 unique_name_in_owner = true
 layout_mode = 2
+
+[node name="PlayerStateMachine" type="Node" parent="." node_paths=PackedStringArray("current_state")]
+script = ExtResource("7_a6ktj")
+current_state = NodePath("IdlePlayerState")
+
+[node name="IdlePlayerState" type="Node" parent="PlayerStateMachine"]
+script = ExtResource("8_3hwvd")
+
+[node name="WalkingPlayerState" type="Node" parent="PlayerStateMachine"]
+script = ExtResource("9_4ymv7")
+
+[node name="SprintingPlayerState" type="Node" parent="PlayerStateMachine"]
+script = ExtResource("10_4ymv7")
 
 [connection signal="animation_started" from="AnimationPlayer" to="." method="_on_animation_player_animation_started"]

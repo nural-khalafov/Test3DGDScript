@@ -11,12 +11,14 @@ config_version=5
 [application]
 
 config/name="Test3DGDScript"
+config/version="0.1.0"
 run/main_scene="uid://t731yuvflmyr"
 config/features=PackedStringArray("4.4", "Forward Plus")
-config/icon="res://icon.svg"
+config/icon="uid://efr1n4tpfola"
 
 [autoload]
 
+DebugGlobals="*res://scripts/DebugGlobals.gd"
 Global="*res://scripts/Global.gd"
 
 [display]

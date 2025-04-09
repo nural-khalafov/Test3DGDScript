@@ -20,6 +20,8 @@ const DEFAULT_SPEED : float = 5.0
 const CROUCH_SPEED : float = 2.0
 const SPRINT_SPEED : float = 8.5
 const JUMP_VELOCITY : float = 4.5
+const ACCELERATION : float = 0.1
+const DECELERATION : float = 0.25
 
 var _speed : float
 var _mouse_input : bool = false
@@ -37,6 +39,9 @@ func _ready() -> void:
 	for child in %WorldModel.find_children("*", "VisualInstance3D"):
 		child.set_layer_mask_value(1, false)
 		child.set_layer_mask_value(2, true)
+
+	#Global.player = self
+	#DebugGlobals.player = self
 
 	# get mouse input
 	Input.mouse_mode = Input.MOUSE_MODE_CAPTURED
@@ -77,9 +82,6 @@ func _input(event: InputEvent) -> void:
 		set_movement_speed("default")
 
 func _physics_process(delta: float) -> void:
-
-	Global.debug.add_property("Movement Speed", _speed, 1)
-
 	# add the gravity
 	if not is_on_floor():
 		velocity.y -= gravity * delta
@@ -97,16 +99,15 @@ func _physics_process(delta: float) -> void:
 	var direction = (transform.basis * Vector3(input_dir.x, 0, input_dir.y)).normalized()
 
 	if direction:
-		velocity.x = direction.x * _speed
-		velocity.z = direction.z * _speed
+		velocity.x = lerp(velocity.x, direction.x * _speed, ACCELERATION)
+		velocity.z = lerp(velocity.z, direction.z * _speed, ACCELERATION)
 	else:
-		velocity.x = move_toward(velocity.x, 0, _speed)
-		velocity.z = move_toward(velocity.z, 0, _speed)
+		velocity.x = move_toward(velocity.x, 0, DECELERATION)
+		velocity.z = move_toward(velocity.z, 0, DECELERATION)
 
 	move_and_slide()
 
 func _update_camera(delta: float):
-
 	_mouse_rotation.x += _tilt_input * delta
 	_mouse_rotation.x = clamp(_mouse_rotation.x, tilt_lower_limit, tilt_upper_limit)
 	_mouse_rotation.y += _rotation_input * delta
