@@ -20,6 +20,8 @@ var _mouse_rotation : Vector3
 var _player_rotation : Vector3
 var _camera_rotation : Vector3
 
+var menu_toggled : bool = false
+
 var input_direction
 
 @onready var animation_tree : AnimationTree = $AnimationTree
@@ -44,9 +46,6 @@ func _unhandled_input(event: InputEvent) -> void:
 		_rotation_input = -event.relative.x * mouse_sensitivity
 		_tilt_input = -event.relative.y * mouse_sensitivity
 
-func _input(event: InputEvent) -> void:
-	if event.is_action_pressed("exit"):
-		get_tree().quit()
 
 func _physics_process(delta: float) -> void:
 	# update camera movement based on mouse movement

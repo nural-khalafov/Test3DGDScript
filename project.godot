@@ -20,6 +20,7 @@ config/icon="uid://efr1n4tpfola"
 
 DebugGlobals="*res://scripts/DebugGlobals.gd"
 Global="*res://scripts/Global.gd"
+MenuGlobals="*res://scripts/MenuGlobals.gd"
 
 [display]
 

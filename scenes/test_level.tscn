@@ -1,4 +1,4 @@
-[gd_scene load_steps=12 format=3 uid="uid://t731yuvflmyr"]
+[gd_scene load_steps=16 format=3 uid="uid://t731yuvflmyr"]
 
 [ext_resource type="Material" uid="uid://c65hmy123ka1c" path="res://assets/graphics/materials/checkerboard_mat.tres" id="1_2venv"]
 [ext_resource type="Environment" uid="uid://cut2nuniglecc" path="res://scenes/test_level_env.tres" id="1_88ety"]
@@ -10,6 +10,10 @@
 [ext_resource type="PackedScene" uid="uid://cgkvkrkblr0j7" path="res://assets/nodes/controllers/Player.tscn" id="8_ahbqi"]
 [ext_resource type="Theme" uid="uid://dbxh4c7yj706u" path="res://assets/graphics/ui/themes/debug.tres" id="9_dw7u0"]
 [ext_resource type="Script" uid="uid://dpy14e14hel55" path="res://scripts/Debug.gd" id="10_fyxdr"]
+[ext_resource type="Texture2D" uid="uid://bnreg23orx4x1" path="res://assets/graphics/ui/buttons/exit_button_icon.png" id="11_dw7u0"]
+[ext_resource type="Texture2D" uid="uid://cnuyl08so2q1h" path="res://assets/graphics/ui/buttons/options_button_icon.png" id="11_fyxdr"]
+[ext_resource type="Texture2D" uid="uid://dral4fv7s0j3d" path="res://assets/graphics/ui/buttons/resume_button_icon.png" id="11_kpk0m"]
+[ext_resource type="Script" uid="uid://b83e3tro7lctx" path="res://scripts/Menu.gd" id="11_qs1vn"]
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_qcd3b"]
 albedo_texture = ExtResource("3_tmr53")
@@ -202,6 +206,7 @@ grow_vertical = 2
 script = ExtResource("8_4asn1")
 
 [node name="DebugPanel" type="PanelContainer" parent="UI"]
+visible = false
 custom_minimum_size = Vector2(200, 0)
 layout_mode = 0
 offset_left = 10.0
@@ -217,3 +222,68 @@ layout_mode = 2
 [node name="VBoxContainer" type="VBoxContainer" parent="UI/DebugPanel/MarginContainer"]
 unique_name_in_owner = true
 layout_mode = 2
+
+[node name="MenuPanel" type="Panel" parent="UI"]
+process_mode = 3
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -300.0
+offset_top = -200.0
+offset_right = 300.0
+offset_bottom = 200.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("11_qs1vn")
+
+[node name="ResumeButton" type="TextureButton" parent="UI/MenuPanel"]
+layout_mode = 1
+anchors_preset = 5
+anchor_left = 0.5
+anchor_right = 0.5
+offset_left = -95.0
+offset_top = 22.0
+offset_right = 161.0
+offset_bottom = 150.0
+grow_horizontal = 2
+scale = Vector2(0.75, 0.75)
+texture_normal = ExtResource("11_kpk0m")
+
+[node name="OptionsButton" type="TextureButton" parent="UI/MenuPanel"]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -95.0
+offset_top = -50.0
+offset_right = 161.0
+offset_bottom = 78.0
+grow_horizontal = 2
+grow_vertical = 2
+scale = Vector2(0.75, 0.75)
+texture_normal = ExtResource("11_fyxdr")
+
+[node name="QuitButton" type="TextureButton" parent="UI/MenuPanel"]
+layout_mode = 1
+anchors_preset = 7
+anchor_left = 0.5
+anchor_top = 1.0
+anchor_right = 0.5
+anchor_bottom = 1.0
+offset_left = -96.0
+offset_top = -121.0
+offset_right = 160.0
+offset_bottom = 7.0
+grow_horizontal = 2
+grow_vertical = 0
+scale = Vector2(0.75, 0.75)
+texture_normal = ExtResource("11_dw7u0")
+
+[connection signal="pressed" from="UI/MenuPanel/ResumeButton" to="UI/MenuPanel" method="_on_resume_button_pressed"]
+[connection signal="pressed" from="UI/MenuPanel/OptionsButton" to="UI/MenuPanel" method="_on_options_button_pressed"]
+[connection signal="pressed" from="UI/MenuPanel/QuitButton" to="UI/MenuPanel" method="_on_quit_button_pressed"]
