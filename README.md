@@ -12,6 +12,7 @@ __________________________________________________
 * Q & E - Leaning (incoming)
 * F - Interact (incoming)
 * / - Open|Close Debug Panel
+* Esc - Open|Close In-Game Menu
 
 __________________________________________________
 
@@ -26,11 +27,13 @@ __________________________________________________
 > * A filly-fledged character mesh with arms, legs and head (not capsule)
 > * Functionable AnimationTree using state machine pattern for player
 > * Basic animations for player ("crouch", "walk", "sprint", "idle")
+> * Basic "In-Game Menu" with functionable "resume" and "quit" buttons
 
 __________________________________________________
 
 ### Incoming updates:
 
+> * Functionable "Options" menu
 > * IK-Setup for leaning movement mechanic
 > * Interaction system
 > * Up & Down stairs movement
