@@ -11,6 +11,7 @@ __________________________________________________
 * Space - Jumping
 * Q & E - Leaning (incoming)
 * F - Interact (incoming)
+* / - Open|Close Debug Panel
 
 __________________________________________________
 
@@ -21,9 +22,10 @@ __________________________________________________
 > * Static white dot crosshair
 > * Prototype scene "test_level" for testing project functionallity
 > * State Machine pattern for FPController
+> * Debug Panel, that shows player's current_state and movement_velocity
 > * A filly-fledged character mesh with arms, legs and head (not capsule)
-> * Functionable AnimationTree using state machine pattern for Player
-> * Basic animations for Player ("crouch", "walk", "sprint", "idle")
+> * Functionable AnimationTree using state machine pattern for player
+> * Basic animations for player ("crouch", "walk", "sprint", "idle")
 
 __________________________________________________
 
