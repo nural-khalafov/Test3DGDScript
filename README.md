@@ -20,10 +20,10 @@ __________________________________________________
 
 ### Currently done:
 
-> * Capsule player with sunglasses (deprecated)
+> * Capsule player with sunglasses **[deprecated]**
 > * Movement mechanics: WASD movement, running, jumping, crouching, mouse look
 > * Static white dot crosshair
-> * Prototype scene "test_level" for testing project functionallity
+> * Prototype scene "test_level" for testing project's mechanics/features
 > * State Machine pattern for FPController
 > * Debug Panel, that shows player's current_state and movement_velocity
 > * A filly-fledged character mesh with arms, legs and head (not capsule)
@@ -37,7 +37,13 @@ __________________________________________________
 ### Incoming updates:
 
 > * IK-Setup for leaning movement mechanic
+> * Blend setup in animation_tree for upper-body and lower-body animations
 > * Interaction system
 > * Up & Down stairs movement
+> * Basic shooter mechanics (melee, pistol, automatic rifle)
+> * SFX for weapons
+> * Juicy weapon animations
+> * Spatial inventory system
+> * Player full-body health system and stamina
 > * IK-Setup for player legs during up & down stairs movement
 > * "Options" menu update(resolution, graphics and controls settings)
