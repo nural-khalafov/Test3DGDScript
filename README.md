@@ -1,6 +1,8 @@
 # Test 3D GDScript (version 0.1.0)
 
-### FPS Template Project
+### Forsu FPS Template
+__________________________________________________
+Template project with first-person view(all done in GDScript) created to test & showcase some mechanics/features from different first-person shooter games
 __________________________________________________
 
 ### Keyboard controls:
