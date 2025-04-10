@@ -4,15 +4,17 @@ const SPEED : float = 5.0
 const ACCELERATION : float = 0.1
 const DECELERATION : float = 0.25
 
-const walk_blend_position : String = "parameters/PlayerStateMachine/Standing/WalkBlendSpace2D/blend_position"
+const HEAD_IDLE_POSITION : float = -0.3
+const DEFAULT_HEAD_HEIGHT : float = 1.8
 
-func enter(previous_state) -> void:
-	pass
+const walk_blend_position : String = "parameters/PlayerStateMachine/Standing/WalkBlendSpace2D/blend_position"
 
 func update(delta):
 	player_controller.update_gravity(delta)
 	player_controller.update_input(SPEED, ACCELERATION, DECELERATION)
 	player_controller.update_velocity()
+
+	player_controller.head_node.position = Vector3(0.0, DEFAULT_HEAD_HEIGHT, HEAD_IDLE_POSITION)
 
 	player_controller.animation_tree.set(walk_blend_position, Vector2.ZERO)
 

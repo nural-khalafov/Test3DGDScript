@@ -1,8 +1,11 @@
 class_name SprintingPlayerState extends PlayerMovementState
 
-const SPEED : float = 8.5
+const SPEED : float = 9
 const ACCELERATION : float = 0.1
 const DECELERATION : float = 0.25
+
+const HEAD_SPRINT_POSITION : float = -0.4
+const DEFAULT_HEAD_HEIGHT : float = 1.8
 
 const sprint_blend_position : String = "parameters/PlayerStateMachine/Standing/RunBlendSpace1D/blend_position"
 
@@ -13,6 +16,9 @@ func update(delta):
     
 	player_controller.animation_tree.is_sprinting = true
 	player_controller.animation_tree.set(sprint_blend_position, SPEED)
+
+	player_controller.head_node.position = Vector3(0.0, DEFAULT_HEAD_HEIGHT, HEAD_SPRINT_POSITION)
+
 
 	if player_controller.velocity.length() == 0.0 and player_controller.is_on_floor():
 		player_controller.animation_tree.is_sprinting = false

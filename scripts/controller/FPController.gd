@@ -5,6 +5,8 @@ class_name PlayerController extends CharacterBody3D
 
 @export_category("Node Components")
 @export var crouch_shapecast : ShapeCast3D
+@export var collision_shape3d : CollisionShape3D
+@export var head_node : Node3D
 
 # Camera tilt constant variables
 const TILT_MIN_LIMIT := deg_to_rad(-90.0)
@@ -23,7 +25,7 @@ var input_direction
 
 @onready var animation_tree : AnimationTree = $"AnimationTree"
 
-var gravity = ProjectSettings.get_setting("physics/3d/default_gravity") * 1.1
+var gravity = ProjectSettings.get_setting("physics/3d/default_gravity")
 
 func _init() -> void:
 	Global.player = self
