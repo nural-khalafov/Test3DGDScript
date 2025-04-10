@@ -28,13 +28,14 @@ __________________________________________________
 > * Functionable AnimationTree using state machine pattern for player
 > * Basic animations for player ("crouch", "walk", "sprint", "idle")
 > * Basic "In-Game Menu" with functionable "resume" and "quit" buttons
-
+> * Functionable "Options" menu (currently only fullscreen mode setting available)
+> * Camera positioning for different player states
 __________________________________________________
 
 ### Incoming updates:
 
-> * Functionable "Options" menu
 > * IK-Setup for leaning movement mechanic
 > * Interaction system
 > * Up & Down stairs movement
 > * IK-Setup for player legs during up & down stairs movement
+> * "Options" menu update(resolution, graphics and controls settings)
