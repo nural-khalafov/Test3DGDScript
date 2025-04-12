@@ -8,7 +8,7 @@ const JUMP_VELOCITY : float = 5.5
 
 const jump_blend_position : String = "parameters/PlayerStateMachine/Standing/JumpBlendSpace1D/blend_position"
 
-func enter(previous_state) -> void:
+func enter(_previous_state) -> void:
     player_controller.velocity.y += JUMP_VELOCITY
     player_controller.animation_tree.is_in_air = true
     player_controller.animation_tree.set(jump_blend_position, 1.0)

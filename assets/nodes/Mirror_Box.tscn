@@ -24,7 +24,6 @@ material = SubResource("StandardMaterial3D_hvwkg")
 script = ExtResource("1_hvwkg")
 
 [node name="SubViewport" type="SubViewport" parent="Mirror"]
-msaa_2d = 3
 msaa_3d = 3
 size = Vector2i(512, 716)
 render_target_update_mode = 0

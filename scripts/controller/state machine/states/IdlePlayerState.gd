@@ -13,6 +13,7 @@ func update(delta):
 	player_controller.update_gravity(delta)
 	player_controller.update_input(SPEED, ACCELERATION, DECELERATION)
 	player_controller.update_velocity()
+	player_controller.update_leaning(true)
 
 	player_controller.head_node.position = Vector3(0.0, DEFAULT_HEAD_HEIGHT, HEAD_IDLE_POSITION)
 

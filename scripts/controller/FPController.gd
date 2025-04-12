@@ -86,3 +86,21 @@ func get_input_direction() -> Vector2:
 
 func update_velocity() -> void:
 	move_and_slide()
+
+func update_leaning(_can_lean: bool) -> void:
+	if _can_lean:
+		if Input.is_action_just_pressed("lean_left"):
+			%Spine_IK_3D.start()
+			animation_tree.set("parameters/LeanBlendSpace1D/blend_position", -1.0)
+		if Input.is_action_just_pressed("lean_right"):
+			%Spine_IK_3D.start()
+			animation_tree.set("parameters/LeanBlendSpace1D/blend_position", 1.0)
+		
+		if Input.is_action_just_released("lean_left"):
+			%Skeleton3D.clear_bones_global_pose_override()
+			%Spine_IK_3D.stop()
+		if Input.is_action_just_released("lean_right"):
+			%Skeleton3D.clear_bones_global_pose_override()
+			%Spine_IK_3D.stop()
+	else:
+		pass
