@@ -13,10 +13,8 @@ const CROUCH_HEAD_HEIGHT : float = 1.2
 var crouch_blend_position: String = "parameters/PlayerStateMachine/Crouched/CrouchingBlendSpace2D/blend_position"
 var walk_blend_position: String = "parameters/PlayerStateMachine/Standing/WalkBlendSpace2D/blend_position"
 
-func update(delta) -> void:
-	player_controller.update_gravity(delta)
+func update(_delta) -> void:
 	player_controller.update_input(SPEED, ACCELERATION, DECELERATION)
-	player_controller.update_velocity()
 
 	player_controller.animation_tree.is_crouched = true
 	set_camera_collision(true)
@@ -27,6 +25,11 @@ func update(delta) -> void:
 
 	if Input.is_action_just_released("crouch"):
 		uncrouch()
+
+func physics_update(_delta):
+	player_controller.update_gravity(_delta)
+	player_controller.update_velocity()
+	player_controller.update_leaning(true, _delta)
 
 func uncrouch():
 	if player_controller.crouch_shapecast.is_colliding() == false and Input.is_action_just_pressed("crouch") == false:

@@ -12,6 +12,9 @@ class_name PlayerController extends CharacterBody3D
 const TILT_MIN_LIMIT := deg_to_rad(-90.0)
 const TILT_MAX_LIMIT := deg_to_rad(90.0)
 
+var lean_blend_target : float = 1.0
+var lean_blend_position : String = "parameters/LeanBlendSpace1D/blend_position"
+
 var _mouse_input : bool = false
 var _rotation_input : float
 var _tilt_input : float
@@ -24,6 +27,7 @@ var menu_toggled : bool = false
 var input_direction
 
 @onready var animation_tree : AnimationTree = $"AnimationTree"
+@onready var animation_player : AnimationPlayer = $"AnimationPlayer"
 
 var gravity = ProjectSettings.get_setting("physics/3d/default_gravity")
 
@@ -35,9 +39,6 @@ func _ready() -> void:
 	# get mouse input
 	Input.mouse_mode = Input.MOUSE_MODE_CAPTURED
 
-	# add crouch check shapecast collision exception for CharacterBody3D node
-	crouch_shapecast.add_exception($".")
-
 func _unhandled_input(event: InputEvent) -> void:
 	_mouse_input = event is InputEventMouseMotion and Input.get_mouse_mode() == Input.MOUSE_MODE_CAPTURED
 	if _mouse_input:
@@ -47,6 +48,10 @@ func _unhandled_input(event: InputEvent) -> void:
 func _physics_process(delta: float) -> void:
 	# update camera movement based on mouse movement
 	_update_camera(delta)
+	# add crouch check shapecast collision exception for CharacterBody3D node
+	crouch_shapecast.add_exception($".")
+
+	#update_weapon_hold_anims()
 
 
 func _update_camera(delta: float):
@@ -87,20 +92,23 @@ func get_input_direction() -> Vector2:
 func update_velocity() -> void:
 	move_and_slide()
 
-func update_leaning(_can_lean: bool) -> void:
+func update_leaning(_can_lean: bool, _delta: float) -> void:
 	if _can_lean:
-		if Input.is_action_just_pressed("lean_left"):
+		if Input.is_action_pressed("lean_left"):
 			%Spine_IK_3D.start()
-			animation_tree.set("parameters/LeanBlendSpace1D/blend_position", -1.0)
-		if Input.is_action_just_pressed("lean_right"):
+			animation_tree.set(lean_blend_position, lerp(animation_tree.get(lean_blend_position), -1.0, _delta * 5))
+		elif Input.is_action_pressed("lean_right"):
 			%Spine_IK_3D.start()
-			animation_tree.set("parameters/LeanBlendSpace1D/blend_position", 1.0)
-		
-		if Input.is_action_just_released("lean_left"):
+			animation_tree.set(lean_blend_position, lerp(animation_tree.get(lean_blend_position), 1.0, _delta * 5))
+		else:
+			animation_tree.set(lean_blend_position, lerp(animation_tree.get(lean_blend_position), 0.0, _delta * 5))
 			%Skeleton3D.clear_bones_global_pose_override()
-			%Spine_IK_3D.stop()
-		if Input.is_action_just_released("lean_right"):
-			%Skeleton3D.clear_bones_global_pose_override()
+			await get_tree().create_timer(_delta * 5).timeout
 			%Spine_IK_3D.stop()
 	else:
 		pass
+
+# func update_weapon_hold_anims():
+# 	var state_machine_playback : AnimationNodeStateMachinePlayback = animation_tree.get("parameters/UpperBodyStateMachine/FreeArms/playback")
+
+# 	state_machine_playback.start("Idle", true)

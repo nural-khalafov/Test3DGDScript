@@ -7,13 +7,12 @@ const DECELERATION : float = 0.25
 const HEAD_IDLE_POSITION : float = -0.3
 const DEFAULT_HEAD_HEIGHT : float = 1.8
 
+var lerping_var
+
 const walk_blend_position : String = "parameters/PlayerStateMachine/Standing/WalkBlendSpace2D/blend_position"
 
-func update(delta):
-	player_controller.update_gravity(delta)
+func update(_delta):
 	player_controller.update_input(SPEED, ACCELERATION, DECELERATION)
-	player_controller.update_velocity()
-	player_controller.update_leaning(true)
 
 	player_controller.head_node.position = Vector3(0.0, DEFAULT_HEAD_HEIGHT, HEAD_IDLE_POSITION)
 
@@ -30,3 +29,8 @@ func update(delta):
 
 	if player_controller.velocity.y > -3.0 and !player_controller.is_on_floor():
 		transition.emit("FallingPlayerState")
+
+func physics_update(_delta):
+	player_controller.update_gravity(_delta)
+	player_controller.update_velocity()
+	player_controller.update_leaning(true, _delta)
