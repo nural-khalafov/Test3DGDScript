@@ -11,7 +11,7 @@ __________________________________________________
 * Ctrl - Crouching
 * Left Shift - Running
 * Space - Jumping
-* Q & E - Leaning (incoming)
+* Q & E - Leaning (experimental)
 * F - Interact (incoming)
 * / - Open|Close Debug Panel
 * Esc - Open|Close In-Game Menu
