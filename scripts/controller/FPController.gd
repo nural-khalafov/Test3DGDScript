@@ -29,8 +29,8 @@ var input_direction
 @onready var animation_tree : AnimationTree = $"AnimationTree"
 @onready var animation_player : AnimationPlayer = $"AnimationPlayer"
 @onready var skeleton : Skeleton3D = $"Armature/Skeleton3D"
-@onready var spine_ik : SkeletonIK3D = $"Armature/Skeleton3D/Spine_IK_3D"
 @onready var camera : Camera3D = $"Head/Camera3D"
+@onready var ik_effector : GodotIKEffector = $"Armature/Skeleton3D/GodotIK/GodotIKEffector"
 
 var gravity = ProjectSettings.get_setting("physics/3d/default_gravity")
 
@@ -61,8 +61,6 @@ func _update_camera(delta: float):
 	_mouse_rotation.x += _tilt_input * delta
 	_mouse_rotation.x = clamp(_mouse_rotation.x, TILT_MIN_LIMIT, TILT_MAX_LIMIT)
 	_mouse_rotation.y += _rotation_input * delta
-
-	spine_ik.start()
 
 	_player_rotation = Vector3(0.0, _mouse_rotation.y, 0.0)
 	_camera_rotation = Vector3(_mouse_rotation.x, 0.0, 0.0)
@@ -98,17 +96,13 @@ func update_velocity() -> void:
 	move_and_slide()
 
 func update_leaning(_can_lean: bool, _delta: float) -> void:
-		if _can_lean:
-			if Input.is_action_pressed("lean_left"):
-				animation_tree.set(lean_blend_position, lerp(animation_tree.get(lean_blend_position), -1.0, _delta * 5))
-			elif Input.is_action_pressed("lean_right"):
-				animation_tree.set(lean_blend_position, lerp(animation_tree.get(lean_blend_position), 1.0, _delta * 5))
-			else:
-				animation_tree.set(lean_blend_position, lerp(animation_tree.get(lean_blend_position), 0.0, _delta * 5))
+	if _can_lean:
+		if Input.is_action_pressed("lean_left"):
+			ik_effector.rotation.z = lerpf(ik_effector.rotation.z, -1.9, _delta * 5)
+		elif Input.is_action_pressed("lean_right"):
+			ik_effector.rotation.z = lerpf(ik_effector.rotation.z, 1.9, _delta * 5)
 		else:
-			pass
+			ik_effector.rotation.z = lerpf(ik_effector.rotation.z, 0.0, _delta * 5)
 
-# func update_weapon_hold_anims():
-# 	var state_machine_playback : AnimationNodeStateMachinePlayback = animation_tree.get("parameters/UpperBodyStateMachine/FreeArms/playback")
-
-# 	state_machine_playback.start("Idle", true)
+	else:
+		pass
