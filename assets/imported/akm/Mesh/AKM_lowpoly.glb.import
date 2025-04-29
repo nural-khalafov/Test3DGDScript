@@ -3,13 +3,13 @@
 importer="scene"
 importer_version=1
 type="PackedScene"
-uid="uid://btxw1ve4mfw7o"
-path="res://.godot/imported/AKM.glb-1499144fa7830ecc2395fbec8199a6b9.scn"
+uid="uid://c2qaj8xi83eoh"
+path="res://.godot/imported/AKM_lowpoly.glb-afe3f4632bd28694f8c5f453f1bf08a5.scn"
 
 [deps]
 
-source_file="res://assets/imported/akm/AKM.glb"
-dest_files=["res://.godot/imported/AKM.glb-1499144fa7830ecc2395fbec8199a6b9.scn"]
+source_file="res://assets/imported/akm/Mesh/AKM_lowpoly.glb"
+dest_files=["res://.godot/imported/AKM_lowpoly.glb-afe3f4632bd28694f8c5f453f1bf08a5.scn"]
 
 [params]
 
@@ -34,9 +34,17 @@ animation/import_rest_as_RESET=false
 import_script/path=""
 _subresources={
 "materials": {
-"Material #44": {
+"Magazine_copy": {
 "use_external/enabled": true,
-"use_external/path": "uid://b0plektv25w5q"
+"use_external/path": "uid://d3dm00so2npy4"
+},
+"Metal": {
+"use_external/enabled": true,
+"use_external/path": "uid://dpxnpnmlb5ce2"
+},
+"Wood": {
+"use_external/enabled": true,
+"use_external/path": "uid://bwwthcil072if"
 }
 }
 }

@@ -2,8 +2,8 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://dqvutn3nct2wn"
-path.s3tc="res://.godot/imported/AKM_NormalMap_Texture.png-a6baea2abade9a1843eeeded561cea60.s3tc.ctex"
+uid="uid://btpp1vv0xowth"
+path.s3tc="res://.godot/imported/AKM_Height.1002.png-277a1bb94e339e0ca8fde1030472f95a.s3tc.ctex"
 metadata={
 "imported_formats": ["s3tc_bptc"],
 "vram_texture": true
@@ -11,8 +11,8 @@ metadata={
 
 [deps]
 
-source_file="res://assets/imported/akm/AKM_NormalMap_Texture.png"
-dest_files=["res://.godot/imported/AKM_NormalMap_Texture.png-a6baea2abade9a1843eeeded561cea60.s3tc.ctex"]
+source_file="res://assets/imported/akm/Textures/AKM_Height.1002.png"
+dest_files=["res://.godot/imported/AKM_Height.1002.png-277a1bb94e339e0ca8fde1030472f95a.s3tc.ctex"]
 
 [params]
 
@@ -20,12 +20,12 @@ compress/mode=2
 compress/high_quality=false
 compress/lossy_quality=0.7
 compress/hdr_compression=1
-compress/normal_map=1
+compress/normal_map=0
 compress/channel_pack=0
 mipmaps/generate=true
 mipmaps/limit=-1
-roughness/mode=1
-roughness/src_normal="res://assets/imported/akm/AKM_NormalMap_Texture.png"
+roughness/mode=0
+roughness/src_normal=""
 process/fix_alpha_border=true
 process/premult_alpha=false
 process/normal_map_invert_y=false

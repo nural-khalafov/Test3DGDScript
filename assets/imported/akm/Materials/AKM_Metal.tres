@@ -1,0 +1,21 @@
+[gd_resource type="StandardMaterial3D" load_steps=6 format=3 uid="uid://dpxnpnmlb5ce2"]
+
+[ext_resource type="Texture2D" uid="uid://ceay1pxixr426" path="res://assets/imported/akm/Textures/AKM_BaseColor.1001.png" id="1_frh5o"]
+[ext_resource type="Texture2D" uid="uid://cg5h4i5ncd4uy" path="res://assets/imported/akm/Textures/AKM_Emissive.1001.png" id="2_lqo3l"]
+[ext_resource type="Texture2D" uid="uid://qa4ig7ybscv0" path="res://assets/imported/akm/Textures/AKM_Metallic.1001.png" id="3_xsckt"]
+[ext_resource type="Texture2D" uid="uid://d27s0hegi6oyy" path="res://assets/imported/akm/Textures/AKM_Normal.1001.png" id="4_j20jq"]
+[ext_resource type="Texture2D" uid="uid://bggcsh6by5x1e" path="res://assets/imported/akm/Textures/AKM_Roughness.1001.png" id="5_qlw4n"]
+
+[resource]
+cull_mode = 2
+albedo_texture = ExtResource("1_frh5o")
+metallic = 0.3
+metallic_texture = ExtResource("3_xsckt")
+metallic_texture_channel = 2
+roughness = 0.8
+roughness_texture = ExtResource("5_qlw4n")
+roughness_texture_channel = 1
+emission_enabled = true
+emission_texture = ExtResource("2_lqo3l")
+normal_enabled = true
+normal_texture = ExtResource("4_j20jq")

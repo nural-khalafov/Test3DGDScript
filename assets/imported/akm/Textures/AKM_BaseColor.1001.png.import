@@ -2,8 +2,8 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://bcfwh85l81waq"
-path.s3tc="res://.godot/imported/AKM_Metallic_Texture.png-5708f20a071b17d9cfaded4a83d09b16.s3tc.ctex"
+uid="uid://ceay1pxixr426"
+path.s3tc="res://.godot/imported/AKM_BaseColor.1001.png-1dc87d84a4b68ed516080cfb5c747abc.s3tc.ctex"
 metadata={
 "imported_formats": ["s3tc_bptc"],
 "vram_texture": true
@@ -11,8 +11,8 @@ metadata={
 
 [deps]
 
-source_file="res://assets/imported/akm/AKM_Metallic_Texture.png"
-dest_files=["res://.godot/imported/AKM_Metallic_Texture.png-5708f20a071b17d9cfaded4a83d09b16.s3tc.ctex"]
+source_file="res://assets/imported/akm/Textures/AKM_BaseColor.1001.png"
+dest_files=["res://.godot/imported/AKM_BaseColor.1001.png-1dc87d84a4b68ed516080cfb5c747abc.s3tc.ctex"]
 
 [params]
 

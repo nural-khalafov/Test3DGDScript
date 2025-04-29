@@ -3,13 +3,13 @@
 importer="scene"
 importer_version=1
 type="PackedScene"
-uid="uid://t3mcpkq8na07"
-path="res://.godot/imported/fps_ak-74m_animations.glb-48183b6fc011f4e4144fcc7a1c3a110a.scn"
+uid="uid://wkhthmk52xlw"
+path="res://.godot/imported/AKM_romanian_dong.glb-02a8a5b706af0935c1f3f8489d90586f.scn"
 
 [deps]
 
-source_file="res://assets/imported/ak74_mesh_anims/fps_ak-74m_animations.glb"
-dest_files=["res://.godot/imported/fps_ak-74m_animations.glb-48183b6fc011f4e4144fcc7a1c3a110a.scn"]
+source_file="res://assets/imported/akm/Mesh/AKM_romanian_dong.glb"
+dest_files=["res://.godot/imported/AKM_romanian_dong.glb-02a8a5b706af0935c1f3f8489d90586f.scn"]
 
 [params]
 
@@ -34,13 +34,9 @@ animation/import_rest_as_RESET=false
 import_script/path=""
 _subresources={
 "materials": {
-"ak74m": {
+"Material": {
 "use_external/enabled": true,
-"use_external/path": "res://assets/imported/ak74_mesh_anims/ak74m.tres"
-},
-"arms": {
-"use_external/enabled": true,
-"use_external/path": "res://assets/imported/ak74_mesh_anims/arms.tres"
+"use_external/path": "uid://bxvf57ympue0i"
 }
 }
 }
