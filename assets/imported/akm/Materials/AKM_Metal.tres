@@ -9,10 +9,10 @@
 [resource]
 cull_mode = 2
 albedo_texture = ExtResource("1_frh5o")
-metallic = 0.3
+metallic = 1.0
+metallic_specular = 0.3
 metallic_texture = ExtResource("3_xsckt")
 metallic_texture_channel = 2
-roughness = 0.8
 roughness_texture = ExtResource("5_qlw4n")
 roughness_texture_channel = 1
 emission_enabled = true

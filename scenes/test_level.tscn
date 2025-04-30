@@ -191,8 +191,14 @@ spot_range = 12.2977
 spot_angle = 55.0855
 
 [node name="SR_Lamp3" type="SpotLight3D" parent="Enviroment/Level/ShootingRange"]
-transform = Transform3D(1, 0, 0, 0, -4.37114e-08, 1, 0, -1, -4.37114e-08, 44.6138, 8.96267, 45.6866)
-light_energy = 8.0
+transform = Transform3D(1, 0, 0, 0, -4.37114e-08, 1, 0, -1, -4.37114e-08, 44.6138, 5.80396, 48.9496)
+light_energy = 3.5
+spot_range = 12.2977
+spot_angle = 55.0855
+
+[node name="SR_Lamp4" type="SpotLight3D" parent="Enviroment/Level/ShootingRange"]
+transform = Transform3D(1, 0, 0, 0, -4.37114e-08, 1, 0, -1, -4.37114e-08, 44.6138, 5.80396, 44.5282)
+light_energy = 3.5
 spot_range = 12.2977
 spot_angle = 55.0855
 

@@ -16,6 +16,11 @@ const TILT_MAX_LIMIT := deg_to_rad(75.0)
 var lean_blend_target : float = 1.0
 var lean_blend_position : String = "parameters/LeanBlendSpace1D/blend_position"
 
+var aim_idle_fov : float = 90.0
+var aim_idle_position : Vector3 = Vector3(0.192, -0.236, 0.151)
+var aim_firing_position : Vector3 = Vector3(0.037, -0.191, 0.221)
+var aim_firing_fov : float = 60.0
+
 var mouse_input : bool = false
 var rotation_input : float
 var tilt_input : float
@@ -33,6 +38,10 @@ var input_direction
 @onready var camera : Camera3D = $"Head/Camera3D"
 @onready var ik_effector : GodotIKEffector = $"Armature/Skeleton3D/GodotIK/GodotIKEffector"
 @onready var head_target : Marker3D = $"Armature/Skeleton3D/HeadPoint/Head_Target"
+
+@onready var right_hand_ik : SkeletonIK3D = $"Armature/Skeleton3D/RightHandIK"
+@onready var left_hand_ik : SkeletonIK3D = $"Armature/Skeleton3D/LeftHandIK"
+@onready var aim_target : Node3D = $"Head/Camera3D/Target"
 
 var gravity = ProjectSettings.get_setting("physics/3d/default_gravity")
 
@@ -54,6 +63,7 @@ func _physics_process(_delta: float) -> void:
 	# update camera movement based on mouse movement
 	update_camera(_delta)
 	update_camera_follow(_delta)
+	update_aiming(_delta)
 	# add crouch check shapecast collision exception for CharacterBody3D node
 	crouch_shapecast.add_exception($".")
 
@@ -111,3 +121,13 @@ func update_leaning(_can_lean: bool, _delta: float) -> void:
 func update_camera_follow(_delta: float) -> void:
 	var desired_position = head_target.global_transform.origin
 	camera.global_transform.origin = camera.global_transform.origin.lerp(desired_position, camera_follow_speed * _delta)
+	right_hand_ik.start()
+	left_hand_ik.start()
+
+func update_aiming(_delta: float) -> void:
+	if Input.is_action_pressed("aim"):
+		aim_target.position = aim_target.position.lerp(aim_firing_position, _delta * 8)
+		camera.fov = 60
+	if Input.is_action_just_released("aim"):
+		aim_target.position = aim_idle_position
+		camera.fov = 90

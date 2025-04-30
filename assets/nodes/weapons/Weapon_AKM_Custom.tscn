@@ -1,0 +1,16 @@
+[gd_scene load_steps=3 format=3 uid="uid://dc2ltkux6exye"]
+
+[ext_resource type="PackedScene" uid="uid://c2qaj8xi83eoh" path="res://assets/imported/akm/Mesh/AKM_lowpoly.glb" id="1_egntf"]
+[ext_resource type="PackedScene" uid="uid://wkhthmk52xlw" path="res://assets/imported/akm/Mesh/AKM_romanian_dong.glb" id="2_f2wqy"]
+
+[node name="AKM_lowpoly" instance=ExtResource("1_egntf")]
+
+[node name="Modules" type="Node3D" parent="." index="0"]
+
+[node name="AKM_romanian_dong" parent="Modules" index="0" instance=ExtResource("2_f2wqy")]
+visible = false
+
+[node name="Grip_L" type="Node3D" parent="." index="1"]
+
+[node name="Magazin Copy" parent="." index="18"]
+visible = false

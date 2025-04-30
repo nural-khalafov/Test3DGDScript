@@ -30,6 +30,10 @@ func update(_delta):
 		player_controller.animation_tree.is_sprinting = false
 		transition.emit("JumpingPlayerState")
 
+	if player_controller.velocity.y > -3.0 and !player_controller.is_on_floor():
+		player_controller.animation_tree.is_sprinting = false
+		transition.emit("FallingPlayerState")
+
 func physics_update(_delta):
 	player_controller.update_gravity(_delta)
 	player_controller.update_velocity()

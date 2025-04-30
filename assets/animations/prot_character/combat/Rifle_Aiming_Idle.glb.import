@@ -3,13 +3,13 @@
 importer="scene"
 importer_version=1
 type="PackedScene"
-uid="uid://wkhthmk52xlw"
-path="res://.godot/imported/AKM_romanian_dong.glb-02a8a5b706af0935c1f3f8489d90586f.scn"
+uid="uid://b6slklk1y2sep"
+path="res://.godot/imported/Rifle_Aiming_Idle.glb-dbd9d272d2cdc853f5030803afbaf4f7.scn"
 
 [deps]
 
-source_file="res://assets/imported/akm/Mesh/AKM_romanian_dong.glb"
-dest_files=["res://.godot/imported/AKM_romanian_dong.glb-02a8a5b706af0935c1f3f8489d90586f.scn"]
+source_file="res://assets/animations/prot_character/combat/Rifle_Aiming_Idle.glb"
+dest_files=["res://.godot/imported/Rifle_Aiming_Idle.glb-dbd9d272d2cdc853f5030803afbaf4f7.scn"]
 
 [params]
 
@@ -32,13 +32,6 @@ animation/trimming=false
 animation/remove_immutable_tracks=true
 animation/import_rest_as_RESET=false
 import_script/path=""
-_subresources={
-"materials": {
-"Material.005": {
-"use_external/enabled": true,
-"use_external/path": "uid://bxvf57ympue0i"
-}
-}
-}
+_subresources={}
 gltf/naming_version=1
 gltf/embedded_image_handling=1
